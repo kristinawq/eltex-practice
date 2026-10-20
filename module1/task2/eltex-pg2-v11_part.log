@@ -1,0 +1,123 @@
+Script started on 2026-10-15 12:15:24+07:00 [TERM="dumb" TTY="/dev/pts/32" COLUMNS="80" LINES="24"]
+eltex-pg2-v11@eltex-2026-autumn:~$ ls
+ls	     lsb_release  lsinitramfs  lslocks	    lsmod	 lspci
+lsattr	     lscpu	  lsipc	       lslogins	    lsns	 lsusb
+lsblk	     lsfd	  lsirq	       lsmem	    lsof
+eltex-pg2-v11@eltex-2026-autumn:~$ echo $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE	     $HISTFILESIZE  $HISTSIZE
+eltex-pg2-v11@eltex-2026-autumn:~$ echo $HISTFILESIZE
+2000
+eltex-pg2-v11@eltex-2026-autumn:~$ ls -d ~/.*
+/home/eltex-pg2-v11/.bash_history  /home/eltex-pg2-v11/.lesshst
+/home/eltex-pg2-v11/.bash_logout   /home/eltex-pg2-v11/.profile
+/home/eltex-pg2-v11/.bashrc	   /home/eltex-pg2-v11/.viminfo
+/home/eltex-pg2-v11/.config
+eltex-pg2-v11@eltex-2026-autumn:~$ export HISTTIMEFORMAT="%F %T "
+eltex-pg2-v11@eltex-2026-autumn:~$ history | tail -3
+   38  2026-10-15 12:15:54 ls -d ~/.*
+   39  2026-10-15 12:16:01 export HISTTIMEFORMAT="%F %T "
+   40  2026-10-15 12:16:05 history | tail -3
+eltex-pg2-v11@eltex-2026-autumn:~$ date
+Thu Oct 15 12:16:25 PM +07 2026
+eltex-pg2-v11@eltex-2026-autumn:~$ history | tail -3
+   40  2026-10-15 12:16:05 history | tail -3
+   41  2026-10-15 12:16:25 date
+   42  2026-10-15 12:16:34 history | tail -3
+eltex-pg2-v11@eltex-2026-autumn:~$ export PROMPT_COMMAND="history -a"
+eltex-pg2-v11@eltex-2026-autumn:~$ date
+Thu Oct 15 12:16:50 PM +07 2026
+eltex-pg2-v11@eltex-2026-autumn:~$ history | tail -3
+   43  2026-10-15 12:16:46 export PROMPT_COMMAND="history -a"
+   44  2026-10-15 12:16:50 date
+   45  2026-10-15 12:17:02 history | tail -3
+eltex-pg2-v11@eltex-2026-autumn:~$ tail -3 ~/.bash_history
+date
+#1792041422
+history | tail -3
+eltex-pg2-v11@eltex-2026-autumn:~$ DATE=$(date +%F)
+eltex-pg2-v11@eltex-2026-autumn:~$ echo $DATE
+2026-10-15
+eltex-pg2-v11@eltex-2026-autumn:~$ TIME=$(date +%T)
+eltex-pg2-v11@eltex-2026-autumn:~$ echo $TIME
+12:20:03
+eltex-pg2-v11@eltex-2026-autumn:~$ DATE_TIME="$DATE $TIME"
+eltex-pg2-v11@eltex-2026-autumn:~$ echo $DATE_TIME
+2026-10-15 12:20:03
+eltex-pg2-v11@eltex-2026-autumn:~$ ls -d /bin/*[0-9]* /sbin/*[0-9]*
+/bin/addr2line			 /bin/x86_64-linux-gnu-ar
+/bin/b2sum			 /bin/x86_64-linux-gnu-as
+/bin/base32			 /bin/x86_64-linux-gnu-c++filt
+/bin/base64			 /bin/x86_64-linux-gnu-cpp
+/bin/bunzip2			 /bin/x86_64-linux-gnu-cpp-12
+/bin/bzip2			 /bin/x86_64-linux-gnu-dwp
+/bin/bzip2recover		 /bin/x86_64-linux-gnu-elfedit
+/bin/c89			 /bin/x86_64-linux-gnu-gcc
+/bin/c89-gcc			 /bin/x86_64-linux-gnu-gcc-12
+/bin/c99			 /bin/x86_64-linux-gnu-gcc-ar
+/bin/c99-gcc			 /bin/x86_64-linux-gnu-gcc-ar-12
+/bin/cpan5.36-x86_64-linux-gnu	 /bin/x86_64-linux-gnu-gcc-nm
+/bin/cpp-12			 /bin/x86_64-linux-gnu-gcc-nm-12
+/bin/diff3			 /bin/x86_64-linux-gnu-gcc-ranlib
+/bin/enc2xs			 /bin/x86_64-linux-gnu-gcc-ranlib-12
+/bin/gcc-12			 /bin/x86_64-linux-gnu-gcov
+/bin/gcc-ar-12			 /bin/x86_64-linux-gnu-gcov-12
+/bin/gcc-nm-12			 /bin/x86_64-linux-gnu-gcov-dump
+/bin/gcc-ranlib-12		 /bin/x86_64-linux-gnu-gcov-dump-12
+/bin/gcov-12			 /bin/x86_64-linux-gnu-gcov-tool
+/bin/gcov-dump-12		 /bin/x86_64-linux-gnu-gcov-tool-12
+/bin/gcov-tool-12		 /bin/x86_64-linux-gnu-gold
+/bin/grub-menulst2cfg		 /bin/x86_64-linux-gnu-gp-archive
+/bin/grub-mkpasswd-pbkdf2	 /bin/x86_64-linux-gnu-gp-collect-app
+/bin/grub-syslinux2cfg		 /bin/x86_64-linux-gnu-gp-display-html
+/bin/h2ph			 /bin/x86_64-linux-gnu-gp-display-src
+/bin/h2xs			 /bin/x86_64-linux-gnu-gp-display-text
+/bin/i386			 /bin/x86_64-linux-gnu-gprof
+/bin/linux32			 /bin/x86_64-linux-gnu-gprofng
+/bin/linux64			 /bin/x86_64-linux-gnu-ld
+/bin/lto-dump-12		 /bin/x86_64-linux-gnu-ld.bfd
+/bin/md5sum			 /bin/x86_64-linux-gnu-ld.gold
+/bin/md5sum.textutils		 /bin/x86_64-linux-gnu-lto-dump
+/bin/pdb3			 /bin/x86_64-linux-gnu-lto-dump-12
+/bin/pdb3.11			 /bin/x86_64-linux-gnu-nm
+/bin/perl5.36.0			 /bin/x86_64-linux-gnu-objcopy
+/bin/perl5.36-x86_64-linux-gnu	 /bin/x86_64-linux-gnu-objdump
+/bin/ping4			 /bin/x86_64-linux-gnu-ranlib
+/bin/ping6			 /bin/x86_64-linux-gnu-readelf
+/bin/pl2pm			 /bin/x86_64-linux-gnu-size
+/bin/pod2html			 /bin/x86_64-linux-gnu-strings
+/bin/pod2man			 /bin/x86_64-linux-gnu-strip
+/bin/pod2text			 /sbin/dumpe2fs
+/bin/pod2usage			 /sbin/e2freefrag
+/bin/py3clean			 /sbin/e2fsck
+/bin/py3compile			 /sbin/e2image
+/bin/py3versions		 /sbin/e2label
+/bin/pydoc3			 /sbin/e2mmpstatus
+/bin/pydoc3.11			 /sbin/e2scrub
+/bin/pygettext3			 /sbin/e2scrub_all
+/bin/pygettext3.11		 /sbin/e2undo
+/bin/python3			 /sbin/e4crypt
+/bin/python3.11			 /sbin/e4defrag
+/bin/sha1sum			 /sbin/fsck.ext2
+/bin/sha224sum			 /sbin/fsck.ext3
+/bin/sha256sum			 /sbin/fsck.ext4
+/bin/sha384sum			 /sbin/killall5
+/bin/sha512sum			 /sbin/mke2fs
+/bin/ssh-argv0			 /sbin/mkfs.ext2
+/bin/systemd-id128		 /sbin/mkfs.ext3
+/bin/traceroute6		 /sbin/mkfs.ext4
+/bin/traceroute6.db		 /sbin/resize2fs
+/bin/x86_64			 /sbin/tune2fs
+/bin/x86_64-linux-gnu-addr2line	 /sbin/update-grub2
+eltex-pg2-v11@eltex-2026-autumn:~$ export PS1='\u@\h-$(date +%H:%M)>'
+eltex-pg2-v11@eltex-2026-autumn-12:23>bash --norc
+eltex-pg2-v11@eltex-2026-autumn-12:24>mkdir -p ~/$(date +%Y)-{01..12}
+eltex-pg2-v11@eltex-2026-autumn-12:24>ls ~
+2026-01	 2026-04  2026-07  2026-10  bash
+2026-02	 2026-05  2026-08  2026-11  logs.log
+2026-03	 2026-06  2026-09  2026-12  report_part1.txt
+eltex-pg2-v11@eltex-2026-autumn-12:24>exit
+exit
+eltex-pg2-v11@eltex-2026-autumn-12:26>exit
+exit
+
+Script done on 2026-10-15 12:26:31+07:00 [COMMAND_EXIT_CODE="0"]

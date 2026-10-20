@@ -1,0 +1,392 @@
+Script started on 2026-10-20 11:03:14+07:00 [TERM="dumb" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+@eltex-2026-autumn:~$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/eltex-pg2-v11/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/eltex-pg2-v11/.ssh/id_rsa
+Your public key has been saved in /home/eltex-pg2-v11/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:tsN9dVtMl5iT921aIfWx/8azSLjkkwDmR3yJp2RCdTc eltex-pg2-v11@eltex-2026-autumn
+The key's randomart image is:
++---[RSA 3072]----+
+|        .. . E o |
+|       .  . . * =|
+|      . . . .* =+|
+|       + * +  +o*|
+|      o S +   . X|
+|       + *  .. *+|
+|        = ooo..o+|
+|         .o+o ..o|
+|           o.. . |
++----[SHA256]-----+
+eltex-pg2-v11@eltex-2026-autumn:~$ ssh-copy-id root@172.16.9.211
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/eltex-pg2-v11/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.16.9.211's password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@172.16.9.211'"
+and check to make sure that only the key(s) you wanted were added.
+
+eltex-pg2-v11@eltex-2026-autumn:~$ ssh root@172.16.9.211 cat /root/.ssh/authorized_keys | diff ~/.ssh/id_rsa.pub -
+eltex-pg2-v11@eltex-2026-autumn:~$ ls -la ~/.ssh/
+total 24
+drwx------  2 eltex-pg2-v11 eltex-pg2-v11 4096 Oct 20 11:14 .
+drwx------ 18 eltex-pg2-v11 eltex-pg2-v11 4096 Oct 20 11:12 ..
+-rw-------  1 eltex-pg2-v11 eltex-pg2-v11 2622 Oct 20 11:03 id_rsa
+-rw-r--r--  1 eltex-pg2-v11 eltex-pg2-v11  585 Oct 20 11:03 id_rsa.pub
+-rw-------  1 eltex-pg2-v11 eltex-pg2-v11  978 Oct 19 14:24 known_hosts
+-rw-------  1 eltex-pg2-v11 eltex-pg2-v11  142 Oct 19 14:23 known_hosts.old
+eltex-pg2-v11@eltex-2026-autumn:~$ ssh root@172.16.9.211 ls -la /root/.ssh
+total 20
+drwx------ 2 root root 4096 Oct 19 12:25 .
+drwx------ 4 root root 4096 Oct 19 11:46 ..
+-rw------- 1 root root  585 Oct 20 04:14 authorized_keys
+-rw------- 1 root root  978 Oct 19 12:25 known_hosts
+-rw-r--r-- 1 root root  142 Oct 19 12:24 known_hosts.old
+eltex-pg2-v11@eltex-2026-autumn:~$ ssh root@172.16.9.211
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-147-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Oct 20 04:16:18 AM UTC 2026
+
+  System load:  0.0                Processes:              113
+  Usage of /:   41.6% of 14.66GB   Users logged in:        0
+  Memory usage: 5%                 IPv4 address for ens18: 172.16.9.211
+  Swap usage:   0%
+
+ * Canonical Workshop gives developers fast, composable, reproducible, and
+   secure developer environments that are perfect for agentic workflows.
+
+   https://ubuntu.com/workshop
+
+Expanded Security Maintenance for Applications is not enabled.
+
+108 updates can be applied immediately.
+1 of these updates is a standard security update.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '26.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Welcome to Ubuntu 24.04.2 LTS
+Last login: Tue Oct 20 03:54:15 2026 from 172.16.8.4
+root@eltex-practice2-pg2-v11:~# hostname
+eltex-practice2-pg2-v11
+root@eltex-practice2-pg2-v11:~# whoami
+root
+root@eltex-practice2-pg2-v11:~# useradd -m -s /bin/bash user1
+root@eltex-practice2-pg2-v11:~# ls -la /home/user1
+total 20
+drwxr-x--- 2 user1 user1 4096 Oct 20 04:17 .
+drwxr-xr-x 4 root  root  4096 Oct 20 04:17 ..
+-rw-r--r-- 1 user1 user1  220 Mar 31  2024 .bash_logout
+-rw-r--r-- 1 user1 user1 3771 Mar 31  2024 .bashrc
+-rw-r--r-- 1 user1 user1  807 Mar 31  2024 .profile
+root@eltex-practice2-pg2-v11:~# passwd user1
+New password: 
+Retype new password: 
+passwd: password updated successfully
+root@eltex-practice2-pg2-v11:~# passwd -S user1
+user1 P 2026-10-20 0 99999 7 -1
+root@eltex-practice2-pg2-v11:~# adduser user2
+info: Adding user `user2' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user2' (1002) ...
+info: Adding new user `user2' (1002) with group `user2 (1002)' ...
+info: Creating home directory `/home/user2' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user2
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] 
+info: Adding new user `user2' to supplemental / extra groups `users' ...
+info: Adding user `user2' to group `users' ...
+root@eltex-practice2-pg2-v11:~# adduser user3
+info: Adding user `user3' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user3' (1003) ...
+info: Adding new user `user3' (1003) with group `user3 (1003)' ...
+info: Creating home directory `/home/user3' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user3
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] y
+info: Adding new user `user3' to supplemental / extra groups `users' ...
+info: Adding user `user3' to group `users' ...
+root@eltex-practice2-pg2-v11:~# usermod -s /usr/sbin/nologin user3
+root@eltex-practice2-pg2-v11:~# grep user3 /etc/passwd
+user3:x:1003:1003:,,,:/home/user3:/usr/sbin/nologin
+root@eltex-practice2-pg2-v11:~# su user3
+This account is currently not available.
+root@eltex-practice2-pg2-v11:~# su -s /bin/bash user3
+user3@eltex-practice2-pg2-v11:/root$ whoami
+user3
+user3@eltex-practice2-pg2-v11:/root$ exit
+exit
+root@eltex-practice2-pg2-v11:~# whoami
+root
+root@eltex-practice2-pg2-v11:~# groupadd prc
+root@eltex-practice2-pg2-v11:~# usermod -aG prc user1
+root@eltex-practice2-pg2-v11:~# usermod -aG prc user2
+root@eltex-practice2-pg2-v11:~# usermod -aG prc user3
+root@eltex-practice2-pg2-v11:~# groups user1 user2 user3
+user1 : user1 prc
+user2 : user2 users prc
+user3 : user3 users prc
+root@eltex-practice2-pg2-v11:~# mkdir -p /opt/share
+root@eltex-practice2-pg2-v11:~# chgrp prc /opt/share 
+root@eltex-practice2-pg2-v11:~# chmod 2770 /opt/share                                                                                                             
+root@eltex-practice2-pg2-v11:~# ls -ld /opt/share
+drwxrws--- 2 root prc 4096 Oct 20 04:26 /opt/share
+root@eltex-practice2-pg2-v11:~# echo "umask 0024" >> /home/user1/.bashrc
+root@eltex-practice2-pg2-v11:~# tail -n 3 /home/user1/.bashrc
+  fi
+fi
+umask 0024
+root@eltex-practice2-pg2-v11:~# whoami
+root
+root@eltex-practice2-pg2-v11:~# su - user1
+user1@eltex-practice2-pg2-v11:~$ touch /opt/share/file1.txt
+user1@eltex-practice2-pg2-v11:~$ ls -la /opt/share
+total 8
+drwxrws--- 2 root  prc  4096 Oct 20 04:47 .
+drwxr-xr-x 3 root  root 4096 Oct 20 04:26 ..
+-rw-r---w- 1 user1 prc     0 Oct 20 04:47 file1.txt
+user1@eltex-practice2-pg2-v11:~$ exit
+logout
+root@eltex-practice2-pg2-v11:~# su - user2
+user2@eltex-practice2-pg2-v11:~$ touch /opt/share/file2.txt
+user2@eltex-practice2-pg2-v11:~$ exit
+logout
+root@eltex-practice2-pg2-v11:~# su -s /bin/bash user3
+user3@eltex-practice2-pg2-v11:/root$ touch /opt/share/file3.txt
+user3@eltex-practice2-pg2-v11:/root$ ls -la /opt/share
+total 8
+drwxrws--- 2 root  prc  4096 Oct 20 04:49 .
+drwxr-xr-x 3 root  root 4096 Oct 20 04:26 ..
+-rw-r---w- 1 user1 prc     0 Oct 20 04:47 file1.txt
+-rw-rw-r-- 1 user2 prc     0 Oct 20 04:49 file2.txt
+-rw-rw-r-- 1 user3 prc     0 Oct 20 04:49 file3.txt
+user3@eltex-practice2-pg2-v11:/root$ su -s user1 -c "rm /opt/share/file2.txt"
+Password: 
+user3@eltex-practice2-pg2-v11:/root$ ls -la /opt/share
+total 8
+drwxrws--- 2 root  prc  4096 Oct 20 04:53 .
+drwxr-xr-x 3 root  root 4096 Oct 20 04:26 ..
+-rw-r---w- 1 user1 prc     0 Oct 20 04:47 file1.txt
+-rw-rw-r-- 1 user3 prc     0 Oct 20 04:49 file3.txt
+user3@eltex-practice2-pg2-v11:/root$ exit
+exit
+root@eltex-practice2-pg2-v11:~# chmod +t /opt/share
+root@eltex-practice2-pg2-v11:~# ls -ld /opt/share
+drwxrws--T 2 root prc 4096 Oct 20 04:53 /opt/share
+root@eltex-practice2-pg2-v11:~# su - user1 -c "rm /opt/share/file3.txt"
+rm: cannot remove '/opt/share/file3.txt': Operation not permitted
+root@eltex-practice2-pg2-v11:~# echo "user1 ALL=(ALL) /usr/bin/dmesg" > /etc/sudoers.d/user1_dmesg
+root@eltex-practice2-pg2-v11:~# su - user1 -c "sudo -l"
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+root@eltex-practice2-pg2-v11:~# su - user1
+user1@eltex-practice2-pg2-v11:~$ sudo -l
+[sudo] password for user1: 
+Matching Defaults entries for user1 on eltex-practice2-pg2-v11:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User user1 may run the following commands on eltex-practice2-pg2-v11:
+    (ALL) /usr/bin/dmesg
+user1@eltex-practice2-pg2-v11:~$ dmesg | head -n 5
+dmesg: read kernel buffer failed: Operation not permitted
+user1@eltex-practice2-pg2-v11:~$ sudo dmesg | head -n 5
+[    0.000000] Linux version 6.8.0-147-generic (buildd@lcy02-amd64-081) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:33:16 UTC 2026 (Ubuntu 6.8.0-147.147-generic 6.8.12)
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-6.8.0-147-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+user1@eltex-practice2-pg2-v11:~$ exit
+logout
+root@eltex-practice2-pg2-v11:~# whoami
+root
+root@eltex-practice2-pg2-v11:~# echo -e '#!/bin/bash\ndmesg' > /usr/local/bin/dmesg_suid.sh
+root@eltex-practice2-pg2-v11:~# chown root:root /usr/local/bin/dmesg_suid.sh
+root@eltex-practice2-pg2-v11:~# chmod 4755 /usr/local/bin/dmesg_suid.sh
+root@eltex-practice2-pg2-v11:~# ls -la /usr/local/bin/dmesg_suid.sh
+-rwsr-xr-x 1 root root 18 Oct 20 05:08 /usr/local/bin/dmesg_suid.sh
+root@eltex-practice2-pg2-v11:~# su - user2
+user2@eltex-practice2-pg2-v11:~$ /usr/local/bin/dmesg_suid.sh
+dmesg: read kernel buffer failed: Operation not permitted
+user2@eltex-practice2-pg2-v11:~$ exit
+logout
+root@eltex-practice2-pg2-v11:~# echo -e '#!/bin/bash\nsudo /usr/bin/dmesg' > /usr/local/bin/dmesg_suid.sh
+root@eltex-practice2-pg2-v11:~# chown root:root /usr/local/bin/dmesg_suid.sh
+root@eltex-practice2-pg2-v11:~# chmod 4755 /usr/local/bin/dmesg_suid.sh
+root@eltex-practice2-pg2-v11:~# echo -e '#!/bin/bash\nsudo /usr/bin/dmesg' > /usr/local/bin/dmesg_suid.sh
+root@eltex-practice2-pg2-v11:~# echo "user2 ALL=(ALL) NOPASSWD: /usr/bin/dmesg" > /etc/sudoers.d/user2_nopasswd
+root@eltex-practice2-pg2-v11:~# su - user2
+user2@eltex-practice2-pg2-v11:~$ /usr/local/bin/dmesg_suid.sh | head -n 3
+[    0.000000] Linux version 6.8.0-147-generic (buildd@lcy02-amd64-081) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:33:16 UTC 2026 (Ubuntu 6.8.0-147.147-generic 6.8.12)
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-6.8.0-147-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
+[    0.000000] KERNEL supported cpus:
+user2@eltex-practice2-pg2-v11:~$ exit
+logout
+root@eltex-practice2-pg2-v11:~# chage -M 10 user1
+root@eltex-practice2-pg2-v11:~# chage -M 10 user2
+root@eltex-practice2-pg2-v11:~# chage -M 10 user3
+root@eltex-practice2-pg2-v11:~# chage -l user1
+Last password change					: Oct 20, 2026
+Password expires					: Oct 30, 2026
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 10
+Number of days of warning before password expires	: 7
+root@eltex-practice2-pg2-v11:~# echo "Кристина Васильева" > /etc/motd
+root@eltex-practice2-pg2-v11:~# cat /etc/motd
+Кристина Васильева
+root@eltex-practice2-pg2-v11:~# rsync -a /etc/ /root/etc_backup/
+root@eltex-practice2-pg2-v11:~# ls -la /root/etc_backup | head -n 5
+total 948
+drwxr-xr-x 109 root root       4096 Oct 20 05:16 .
+drwx------   6 root root       4096 Oct 20 05:18 ..
+-rw-r--r--   1 root root       3444 Jul  5  2023 adduser.conf
+drwxr-xr-x   2 root root       4096 Oct 15 08:00 alternatives
+root@eltex-practice2-pg2-v11:~# ls -la /etc/ | head -n 5
+total 948
+drwxr-xr-x 109 root root       4096 Oct 20 05:16 .
+drwx------   6 root root       4096 Oct 20 05:18 ..
+-rw-r--r--   1 root root       3444 Jul  5  2023 adduser.conf
+drwxr-xr-x   2 root root       4096 Oct 15 08:00 alternatives
+
+root@eltex-practice2-pg2-v11:~# tar -czf /root/etc_backup.tar.gz -C /root/etc_backup .
+root@eltex-practice2-pg2-v11:~# tar -cjf /root/etc_backup.tar.bz2 -C /root/etc_backup .
+root@eltex-practice2-pg2-v11:~# 7z a -t7z /root/etc_backup.7z /root/etc_backup/*
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=en_US.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive:
+  0M Scan  /root/etc_backup/                            
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/mtab
+
+ 34M 888 Scan  /root/etc_backup/multipath/                                          
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/os-release
+
+ 34M 937 Scan  /root/etc_backup/PackageKit/                                           
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/resolv.conf
+
+ 35M 1102 Scan  /root/etc_backup/rsyslog.d/                                           243 folders, 1457 files, 38625062 bytes (37 MiB)
+
+Creating archive: /root/etc_backup.7z
+
+Add new data to archive: 243 folders, 1457 files, 38625062 bytes (37 MiB)
+
+  0%     10% 1416 + alternatives/ex                            16% 1416 + alternatives/ex                            21% 1426 + alternatives/lzma                              25% 1435 + alternatives/rview                               30% 1435 + alternatives/rview                               34% 1435 + alternatives/rview                               38% 1436 + alternatives/rvim                              42% 1436 + alternatives/rvim                              46% 1436 + alternatives/rvim                              50% 1440 + alternatives/vi                            54% 1440 + alternatives/vi                            58% 1441 + alternatives/view                              62% 1441 + alternatives/view                              64% 1442 + alternatives/vim                             72% 1442 + alternatives/vim                             76% 1442 + alternatives/vim                             82% 1443 + alternatives/vimdiff                                 86% 1443 + alternatives/vimdiff                                 92% 1445 + rmt                96% 1445 + rmt               
+Files read from disk: 1445
+Archive size: 4656200 bytes (4548 KiB)
+
+Scan WARNINGS for files and folders:
+
+/root/etc_backup/mtab : errno=2 : No such file or directory
+/root/etc_backup/os-release : errno=2 : No such file or directory
+/root/etc_backup/resolv.conf : errno=2 : No such file or directory
+----------------
+Scan WARNINGS: 3
+root@eltex-practice2-pg2-v11:~# ls -lh /root/etc_backup.tar.gz /root/etc_backup.tar.bz2 /root/etc_backup.7z
+-rw-r--r-- 1 root root 4656200 Oct 20 05:22 /root/etc_backup.7z
+-rw-r--r-- 1 root root  540368 Oct 20 05:22 /root/etc_backup.tar.bz2
+-rw-r--r-- 1 root root  576386 Oct 20 05:22 /root/etc_backup.tar.gz
+root@eltex-practice2-pg2-v11:~# date >> /etc/motd
+root@eltex-practice2-pg2-v11:~# cat /etc/motd
+Кристина Васильева
+Tue Oct 20 05:25:21 AM UTC 2026
+root@eltex-practice2-pg2-v11:~# rsync -av /etc/ /root/etc_backup/
+sending incremental file list
+motd
+
+sent 66,496 bytes  received 279 bytes  133,550.00 bytes/sec
+total size is 2,332,253  speedup is 34.93
+root@eltex-practice2-pg2-v11:~# tar -czf /root/etc_backup.tar.gz -C /root/etc_backup .
+root@eltex-practice2-pg2-v11:~# ls -la
+total 5688
+drwx------   6 root root    4096 Oct 20 05:22 .
+drwxr-xr-x  23 root root    4096 Mar 12  2025 ..
+-rw-------   1 root root    4397 Oct 20 04:35 .bash_history
+-rw-r--r--   1 root root    3106 Apr 22  2024 .bashrc
+drwx------   2 root root    4096 Oct 14 08:08 .cache
+drwxr-xr-x 109 root root    4096 Oct 20 05:16 etc_backup
+-rw-r--r--   1 root root 4656200 Oct 20 05:22 etc_backup.7z
+-rw-r--r--   1 root root  540368 Oct 20 05:22 etc_backup.tar.bz2
+-rw-r--r--   1 root root  576412 Oct 20 05:27 etc_backup.tar.gz
+-rw-------   1 root root      20 Oct 19 07:39 .lesshst
+drwx------   3 root root    4096 Oct 20 04:33 .local
+-rw-r--r--   1 root root     161 Apr 22  2024 .profile
+drwx------   2 root root    4096 Oct 19 12:25 .ssh
+-rw-------   1 root root     865 Mar 12  2025 .viminfo
+root@eltex-practice2-pg2-v11:~# tar -djf /root/etc_backup.tar.bz2 -C /root/etc_backup
+./motd: Mod time differs
+./motd: Size differs
+root@eltex-practice2-pg2-v11:~# mkdir -p /root/etc_backup_gzip
+root@eltex-practice2-pg2-v11:~# tar -xzf /root/etc_backup.tar.gz -C /root/etc_backup_gzip
+root@eltex-practice2-pg2-v11:~# mkdir -p /root/etc_backup_7zip
+root@eltex-practice2-pg2-v11:~# 7z x -o/root/etc_backup_7zip /root/etc_backup.7z
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=en_US.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive for archives:
+  0M Scan /root/                1 file, 4656200 bytes (4548 KiB)
+
+Extracting archive: /root/etc_backup.7z
+--
+Path = /root/etc_backup.7z
+Type = 7z
+Physical Size = 4656200
+Headers Size = 20211
+Method = LZMA2:24 BCJ
+Solid = +
+Blocks = 2
+
+  0%     83% 1663         Everything is Ok
+
+Folders: 243
+Files: 1457
+Size:       38625062
+Compressed: 4656200
+root@eltex-practice2-pg2-v11:~# diff /root/etc_backup_gzip/motd /root/etc_backup_7zip/motd
+2d1
+< Tue Oct 20 05:25:21 AM UTC 2026
+root@eltex-practice2-pg2-v11:~# exit
+logout
+Connection to 172.16.9.211 closed.
+eltex-pg2-v11@eltex-2026-autumn:~$ exit
+exit
+
+Script done on 2026-10-20 12:32:52+07:00 [COMMAND_EXIT_CODE="1"]
