@@ -1,0 +1,316 @@
+Script started on 2026-10-20 13:34:56+07:00 [TERM="dumb" TTY="/dev/pts/2" COLUMNS="93" LINES="49"]
+eltex-pg2-v11@eltex-2026-autumn:~$ ssh root@172.16.9.211
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-147-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:	   https://landscape.canonical.com
+ * Support:	   https://ubuntu.com/pro
+
+ System information as of Tue Oct 20 06:36:22 AM UTC 2026
+
+  System load:	0.0		   Processes:		   111
+  Usage of /:	42.1% of 14.66GB   Users logged in:	   0
+  Memory usage: 6%		   IPv4 address for ens18: 172.16.9.211
+  Swap usage:	0%
+
+ * Canonical Workshop gives developers fast, composable, reproducible, and
+   secure developer environments that are perfect for agentic workflows.
+
+   https://ubuntu.com/workshop
+
+Expanded Security Maintenance for Applications is not enabled.
+
+111 updates can be applied immediately.
+5 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '26.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Кристина Васильева
+Tue Oct 20 05:25:21 AM UTC 2026
+Last login: Tue Oct 20 04:44:52 2026 from 172.16.8.4
+root@eltex-practice2-pg2-v11:~# apt install git gh -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  git-man
+Suggested packages:
+  git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb git-cvs
+  git-mediawiki git-svn
+The following NEW packages will be installed:
+  gh
+The following packages will be upgraded:
+  git git-man
+2 upgraded, 1 newly installed, 0 to remove and 89 not upgraded.
+Need to get 8,836 kB/13.6 MB of archives.
+After this operation, 45.5 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://ru.archive.ubuntu.com/ubuntu noble-updates/universe amd64 gh amd64 2.45.0-1ubuntu0.3 [8,836 kB]
+Fetched 8,836 kB in 1s (12.2 MB/s)
+
+root@eltex-practice2-pg2-v11:~# git config --global user.name "kristinawq"
+root@eltex-practice2-pg2-v11:~# git config --global user.email "kristino4kawww@mail.ru"
+root@eltex-practice2-pg2-v11:~# git config --global init.defaultBranch main
+root@eltex-practice2-pg2-v11:~# ssh-keygen -t ed25519 -f ~/.ssh/kristinawq
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/kristinawq
+Your public key has been saved in /root/.ssh/kristinawq.pub
+The key fingerprint is:
+SHA256:9brvDmTQ2lTh5an+n0vPpXVe5Q2FBG/l7BnJmRSfEMM root@eltex-practice2-pg2-v11
+The key's randomart image is:
++--[ED25519 256]--+
+|	     =*+oo|
+|	  . o E=**|
+|	 . + . *B=|
+|	  * . o oo|
+|	 S + o ..o|
+|	  o o	oo|
+|	   o .	.B|
+|	    o ..=*|
+|	   .++ o+*|
++----[SHA256]-----+
+root@eltex-practice2-pg2-v11:~# gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? SSH
+? Upload your SSH public key to your GitHub account? /root/.ssh/kristinawq.pub
+? Title for your SSH key: eltex-practice2-pg2-v11
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+! First copy your one-time code: 5B91-F81D
+Press Enter to open github.com in your browser...
+! Failed opening a web browser at https://github.com/login/device
+  exec: "xdg-open,x-www-browser,www-browser,wslview": executable file not found in $PATH
+  Please try entering the URL in your browser manually
+✓ Authentication complete.
+- gh config set -h github.com git_protocol ssh
+✓ Configured git protocol
+! Authentication credentials saved in plain text
+✓ Uploaded the SSH key to your GitHub account: /root/.ssh/kristinawq.pub
+✓ Logged in as kristinawq
+root@eltex-practice2-pg2-v11:~# gh auth setup-git --hostname github.com
+root@eltex-practice2-pg2-v11:~# gh auth status
+github.com
+  ✓ Logged in to github.com account kristinawq (/root/.config/gh/hosts.yml)
+  - Active account: true
+  - Git operations protocol: ssh
+  - Token: gho_************************************
+  - Token scopes: 'admin:public_key', 'gist', 'read:org', 'repo'
+root@eltex-practice2-pg2-v11:~# gh repo create eltex-practice --public
+✓ Created repository kristinawq/eltex-practice on GitHub
+  https://github.com/kristinawq/eltex-practice
+root@eltex-practice2-pg2-v11:~# mkdir ~/eltex-practice && cd ~/eltex-practice
+root@eltex-practice2-pg2-v11:~/eltex-practice# echo "# Практика по Linux" >> README.md
+root@eltex-practice2-pg2-v11:~/eltex-practice# git init
+Initialized empty Git repository in /root/eltex-practice/.git/
+root@eltex-practice2-pg2-v11:~/eltex-practice# git add README.md
+root@eltex-practice2-pg2-v11:~/eltex-practice# git commit -m "first commit"
+[main (root-commit) 12ca0e7] first commit
+ 1 file changed, 2 insertions(+)
+ create mode 100644 README.md
+root@eltex-practice2-pg2-v11:~/eltex-practice# git branch -M main
+root@eltex-practice2-pg2-v11:~/eltex-practice# git remote add origin git@github.com:kristinawq/eltex-practice.git
+root@eltex-practice2-pg2-v11:~/eltex-practice# git push -u origin main
+The authenticity of host 'github.com (140.82.121.3)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+root@eltex-practice2-pg2-v11:~/eltex-practice# echo -e "Host github.com\n  IdentityFile ~/.ssh/kristinawq\n IdentitiesOnly yes" >> ~/.ssh/config
+root@eltex-practice2-pg2-v11:~/eltex-practice# ssh -T git@github.com
+Hi kristinawq! You've successfully authenticated, but GitHub does not provide shell access.
+root@eltex-practice2-pg2-v11:~/eltex-practice# git push -u origin main
+Enumerating objects: 3, done.
+Counting objects:  33% (1/3)Counting objects:  66% (2/3)Counting objects: 100% (3/3)Counting objects: 100% (3/3), done.
+Delta compression using up to 2 threads
+Compressing objects:  50% (1/2)Compressing objects: 100% (2/2)Compressing objects: 100% (2/2), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 247 bytes | 247.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:kristinawq/eltex-practice.git
+ * [new branch]	     main -> main
+branch 'main' set up to track 'origin/main'.
+root@eltex-practice2-pg2-v11:~/eltex-practice# mkdir -p module1/task1
+root@eltex-practice2-pg2-v11:~/eltex-practice# mkdir module1/task2
+root@eltex-practice2-pg2-v11:~/eltex-practice# mkdir module1/task3
+root@eltex-practice2-pg2-v11:~/eltex-practice# ls -R module1
+module1:
+task1  task2  task3
+
+module1/task1:
+
+module1/task2:
+
+module1/task3:
+root@eltex-practice2-pg2-v11:~/eltex-practice# exit
+logout
+Connection to 172.16.9.211 closed.
+eltex-pg2-v11@eltex-2026-autumn:~$ scp ~/eltex-pg2-v11_part.log root@172.16.9.211:/root/eltex-practice/module1/task2/
+eltex-pg2-v11@eltex-2026-autumn:~$ scp ~/eltex-pg2-v11_part3.log root@172.16.9.211:/root/eltex-practice/module1/task3/
+eltex-pg2-v11@eltex-2026-autumn:~$ ssh root@172.16.9.211
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-147-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:	   https://landscape.canonical.com
+ * Support:	   https://ubuntu.com/pro
+
+ System information as of Tue Oct 20 07:03:40 AM UTC 2026
+
+  System load:	0.34		   Processes:		   113
+  Usage of /:	42.4% of 14.66GB   Users logged in:	   0
+  Memory usage: 6%		   IPv4 address for ens18: 172.16.9.211
+  Swap usage:	0%
+
+ * Canonical Workshop gives developers fast, composable, reproducible, and
+   secure developer environments that are perfect for agentic workflows.
+
+   https://ubuntu.com/workshop
+
+Expanded Security Maintenance for Applications is not enabled.
+
+107 updates can be applied immediately.
+1 of these updates is a standard security update.
+To see these additional updates run: apt list --upgradable
+
+2 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '26.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Кристина Васильева
+Tue Oct 20 05:25:21 AM UTC 2026
+Last login: Tue Oct 20 07:02:10 2026 from 172.16.8.4
+root@eltex-practice2-pg2-v11:~# cd eltex-practice/
+root@eltex-practice2-pg2-v11:~/eltex-practice# ld s -R module1
+module1:
+task1  task2  task3
+
+module1/task1:
+
+module1/task2:
+eltex-pg2-v11_part.log
+
+module1/task3:
+eltex-pg2-v11_part3.log
+root@eltex-practice2-pg2-v11:~/eltex-practice# find module1 -type f
+module1/task2/eltex-pg2-v11_part.log
+module1/task3/eltex-pg2-v11_part3.log
+root@eltex-practice2-pg2-v11:~/eltex-practice# git add .
+root@eltex-practice2-pg2-v11:~/eltex-practice# git commit -m "Добавление отчетов в папки"
+[main 22296eb] Добавление отчетов в папки
+ 3 files changed, 596 insertions(+)
+ create mode 100644 module1/task3/eltex-pg2-v11_part.log
+ create mode 100644 module1/task3/eltex-pg2-v11_part3.log
+root@eltex-practice2-pg2-v11:~/eltex-practice# git push
+Enumerating objects: 11, done.
+Counting objects:   9% (1/11)Counting objects:	18% (2/11)Counting objects:  27% (3/11)Counting objects:  36% (4/11)Counting objects:  45% (5/11)Counting objects:  54% (6/11)Counting objects:	 63% (7/11)Counting objects:  72% (8/11)Counting objects:  81% (9/11)Counting objects:	90% (10/11)Counting objects: 100% (11/11)Counting objects: 100% (11/11), done.
+Delta compression using up to 2 threads
+Compressing objects:  11% (1/9)Compressing objects:  22% (2/9)Compressing objects:  33% (3/9)Compressing objects:  44% (4/9)Compressing objects:  55% (5/9)Compressing objects:	 66% (6/9)Compressing objects:	77% (7/9)Compressing objects:  88% (8/9)Compressing objects: 100% (9/9)Compressing objects: 100% (9/9), done.
+Writing objects:  10% (1/10)Writing objects:  20% (2/10)Writing objects:  30% (3/10)Writing objects:  40% (4/10)Writing objects:  50% (5/10)Writing objects:  60% (6/10)Writing objects:  70% (7/10)Writing objects:  80% (8/10)Writing objects:  90% (9/10)Writing objects: 100% (10/10)Writing objects: 100% (10/10), 7.78 KiB | 7.78 MiB/s, done.
+Total 10 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:kristinawq/eltex-practice.git
+   12ca0e7..22296eb  main -> main
+root@eltex-practice2-pg2-v11:~/eltex-practice# git pull
+Already up to date.
+root@eltex-practice2-pg2-v11:~/eltex-practice# mkdir ~/eltex-practice_clone && cd ~/eltex-practice_clone
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# git clone git@github.com:kristinawq/eltex-practice.git .
+Cloning into '.'...
+remote: Enumerating objects: 13, done.
+remote: Counting objects:   7% (1/13)	     remote: Counting objects:	15% (2/13)	  remote: Counting objects:  23% (3/13)	       remote: Counting objects:  30% (4/13)	    remote: Counting objects:  38% (5/13)	 remote: Counting objects:  46% (6/13)	      remote: Counting objects:	 53% (7/13)	   remote: Counting objects:  61% (8/13)	remote: Counting objects:  69% (9/13)	     remote: Counting objects:	76% (10/13)	   remote: Counting objects:  84% (11/13)	 remote: Counting objects:  92% (12/13)	       remote: Counting objects: 100% (13/13)	     remote: Counting objects: 100% (13/13), done.
+remote: Compressing objects:   9% (1/11)	remote: Compressing objects:  18% (2/11)	remote: Compressing objects:  27% (3/11)	remote: Compressing objects:  36% (4/11)	remote: Compressing objects:  45% (5/11)	remote: Compressing objects:  54% (6/11)	remote: Compressing objects:  63% (7/11)	remote: Compressing objects:  72% (8/11)	remote: Compressing objects:  81% (9/11)	remote: Compressing objects:  90% (10/11)	 remote: Compressing objects: 100% (11/11)	  remote: Compressing objects: 100% (11/11), done.
+remote: Total 13 (delta 0), reused 13 (delta 0), pack-reused 0 (from 0)
+Receiving objects:   7% (1/13)Receiving objects:  15% (2/13)Receiving objects:	23% (3/13)Receiving objects:  30% (4/13)Receiving objects:  38% (5/13)Receiving objects:  46% (6/13)Receiving objects:	53% (7/13)Receiving objects:  61% (8/13)Receiving objects:  69% (9/13)Receiving objects:  76% (10/13)Receiving objects:	 84% (11/13)Receiving objects:	92% (12/13)Receiving objects: 100% (13/13)Receiving objects: 100% (13/13), 7.99 KiB | 7.99 MiB/s, done.
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# ls -la
+total 24
+drwxr-xr-x  5 root root 4096 Oct 20 07:14 .
+drwx------ 11 root root 4096 Oct 20 07:13 ..
+drwxr-xr-x  8 root root 4096 Oct 20 07:14 .git
+drwxr-xr-x  4 root root 4096 Oct 20 07:14 module1
+drwxr-xr-x  3 root root 4096 Oct 20 07:14 module2
+-rw-r--r--  1 root root	  60 Oct 20 07:14 README.md
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# cd ~/eltex-practice
+root@eltex-practice2-pg2-v11:~/eltex-practice# echo "Тест" >> README.md
+root@eltex-practice2-pg2-v11:~/eltex-practice# git add README.md
+root@eltex-practice2-pg2-v11:~/eltex-practice# git commit -m "Внесены изменения"
+[main 97759c4] Внесены изменения
+ 1 file changed, 1 insertion(+)
+root@eltex-practice2-pg2-v11:~/eltex-practice# git push
+Enumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 363 bytes | 363.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/1)	    remote: Resolving deltas: 100% (1/1)	remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:kristinawq/eltex-practice.git
+   22296eb..97759c4  main -> main
+root@eltex-practice2-pg2-v11:~/eltex-practice# cd ~/eltex-practice_clone
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# git fetch
+remote: Enumerating objects: 5, done.
+remote: Counting objects:  20% (1/5)	    remote: Counting objects:  40% (2/5)	remote: Counting objects:  60% (3/5)	    remote: Counting objects:  80% (4/5)	remote: Counting objects: 100% (5/5)	    remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects:  50% (1/2)	       remote: Compressing objects: 100% (2/2)	      remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0 (from 0)
+Unpacking objects:  33% (1/3)Unpacking objects:	 66% (2/3)Unpacking objects: 100% (3/3)Unpacking objects: 100% (3/3), 343 bytes | 343.00 KiB/s, done.
+From github.com:kristinawq/eltex-practice
+   22296eb..97759c4  main	-> origin/main
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# git log origin/main
+WARNING: terminal is not fully functional
+Press RETURN to continue
+commit 97759c45a04039fb160c78301dc7eb4fd540b2db (origin/main, origin/HEAD)
+Author: kristinawq <kristino4kawww@mail.ru>
+Date:	Tue Oct 20 07:16:11 2026 +0000
+
+    Внесены изменения
+
+commit 22296ebee30fef55f72641fbec6c9a0543746674 (HEAD -> main)
+Author: kristinawq <kristino4kawww@mail.ru>
+Date:	Tue Oct 20 07:09:58 2026 +0000
+
+    Добавление отчетов в папки
+
+commit 12ca0e7510c7035c0f4cfac82e8a470fe847d0e4
+Author: kristinawq <kristino4kawww@mail.ru>
+Date:	Tue Oct 20 06:49:43 2026 +0000
+
+    first commit
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# git diff main origin/main
+WARNING: terminal is not fully functional
+Press RETURN to continue
+diff --git a/README.md b/README.md
+index 8d0b9be..5d353da 100644
+--- a/README.md
++++ b/README.md
+@@ -1,2 +1,3 @@
+ # Практика по Linux
+ # Практика по Linux
++Тест
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# git merge origin/main
+Updating 22296eb..97759c4
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# tail -n 3 README.md
+# Практика по Linux
+# Практика по Linux
+Тест
+root@eltex-practice2-pg2-v11:~/eltex-practice_clone# cd ~
+root@eltex-practice2-pg2-v11:~# exit
+logout
+Connection to 172.16.9.211 closed.
+eltex-pg2-v11@eltex-2026-autumn:~$ exit
+exit
+
+Script done on 2026-10-20 14:19:15+07:00 [COMMAND_EXIT_CODE="0"]
