@@ -1,0 +1,117 @@
+Script started on 2026-10-21 13:28:17+07:00 [TERM="bumb" TTY="/dev/pts/4" COLUMNS="80" LINES="24"]
+
+root@eltex-practice2-pg2-v11:~# journalctl -b -o short-unix | awk 'NR==1 {start=$1} $1 <= start+20 {print}' | head -n 15
+1792344172.882960 localhost kernel: Linux version 6.8.0-147-generic (buildd@lcy02-amd64-081) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:33:16 UTC 2026 (Ubuntu 6.8.0-147.147-generic 6.8.12)
+1792344172.882979 localhost kernel: Command line: BOOT_IMAGE=/vmlinuz-6.8.0-147-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
+1792344172.882986 localhost kernel: KERNEL supported cpus:
+1792344172.882990 localhost kernel:   Intel GenuineIntel
+1792344172.882995 localhost kernel:   AMD AuthenticAMD
+1792344172.882999 localhost kernel:   Hygon HygonGenuine
+1792344172.883004 localhost kernel:   Centaur CentaurHauls
+1792344172.883008 localhost kernel:   zhaoxin   Shanghai  
+1792344172.883012 localhost kernel: BIOS-provided physical RAM map:
+1792344172.883017 localhost kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+1792344172.883021 localhost kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+1792344172.883027 localhost kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+1792344172.883031 localhost kernel: BIOS-e820: [mem 0x0000000000100000-0x00000000bffd9fff] usable
+1792344172.883035 localhost kernel: BIOS-e820: [mem 0x00000000bffda000-0x00000000bfffffff] reserved
+1792344172.883041 localhost kernel: BIOS-e820: [mem 0x00000000feffc000-0x00000000feffffff] reserved
+root@eltex-practice2-pg2-v11:~# head -n 5 /var/log/auth.log
+2026-10-18T10:13:01.677151+00:00 localhost systemd-logind[707]: New seat seat0.
+2026-10-18T10:13:01.677153+00:00 localhost systemd-logind[707]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-10-18T10:13:01.677154+00:00 localhost systemd-logind[707]: Watching system buttons on /dev/input/event1 (AT Translated Set 2 keyboard)
+2026-10-18T10:13:01.677197+00:00 localhost polkitd[701]: Loading rules from directory /etc/polkit-1/rules.d
+2026-10-18T10:13:01.677199+00:00 localhost polkitd[701]: Loading rules from directory /usr/share/polkit-1/rules.d
+root@eltex-practice2-pg2-v11:~# awk '{print $3, $0}' /var/log/auth.log | head -n 5
+systemd-logind[707]: 2026-10-18T10:13:01.677151+00:00 localhost systemd-logind[707]: New seat seat0.
+systemd-logind[707]: 2026-10-18T10:13:01.677153+00:00 localhost systemd-logind[707]: Watching system buttons on /dev/input/event0 (Power Button)
+systemd-logind[707]: 2026-10-18T10:13:01.677154+00:00 localhost systemd-logind[707]: Watching system buttons on /dev/input/event1 (AT Translated Set 2 keyboard)
+polkitd[701]: 2026-10-18T10:13:01.677197+00:00 localhost polkitd[701]: Loading rules from directory /etc/polkit-1/rules.d
+polkitd[701]: 2026-10-18T10:13:01.677199+00:00 localhost polkitd[701]: Loading rules from directory /usr/share/polkit-1/rules.d
+root@eltex-practice2-pg2-v11:~# awk '{print $3, $0}' /var/log/auth.log | sed 's/\[[0-9]*\]//g' | head -n 5
+systemd-logind: 2026-10-18T10:13:01.677151+00:00 localhost systemd-logind: New seat seat0.
+systemd-logind: 2026-10-18T10:13:01.677153+00:00 localhost systemd-logind: Watching system buttons on /dev/input/event0 (Power Button)
+systemd-logind: 2026-10-18T10:13:01.677154+00:00 localhost systemd-logind: Watching system buttons on /dev/input/event1 (AT Translated Set 2 keyboard)
+polkitd: 2026-10-18T10:13:01.677197+00:00 localhost polkitd: Loading rules from directory /etc/polkit-1/rules.d
+polkitd: 2026-10-18T10:13:01.677199+00:00 localhost polkitd: Loading rules from directory /usr/share/polkit-1/rules.d
+root@eltex-practice2-pg2-v11:~# awk '{print $3, $0}' /var/log/auth.log | sed 's/\[[0-9]*\]//g' | sort | head -n 10
+chage: 2026-10-19T09:52:47.689333+00:00 localhost chage: changed password expiry for user1
+chage: 2026-10-19T09:52:50.459389+00:00 localhost chage: changed password expiry for user2
+chage: 2026-10-19T09:52:54.244029+00:00 localhost chage: changed password expiry for user3
+chage: 2026-10-20T05:15:58.590841+00:00 localhost chage: changed password expiry for user1
+chage: 2026-10-20T05:15:58.651207+00:00 localhost chage: changed password expiry for user2
+chage: 2026-10-20T05:16:00.212089+00:00 localhost chage: changed password expiry for user3
+chfn: 2026-10-19T07:36:20.364598+00:00 localhost chfn: changed user 'user2' information
+chfn: 2026-10-19T07:36:35.766654+00:00 localhost chfn: changed user 'user3' information
+chfn: 2026-10-20T04:19:36.828700+00:00 localhost chfn: changed user 'user2' information
+chfn: 2026-10-20T04:19:55.191142+00:00 localhost chfn: changed user 'user3' information
+root@eltex-practice2-pg2-v11:~# awk '{print $3}' /var/log/auth.log | sed 's/\[[0-9]*\]//g' | sort | uniq -c | sort -nr | head -n 10
+    976 CRON:
+    186 sshd:
+    111 systemd-logind:
+     84 su:
+     32 (systemd):
+     19 userdel:
+     18 groupadd:
+     14 usermod:
+     14 sudo:
+      8 useradd:
+root@eltex-practice2-pg2-v11:~# grep "/usr/sbin/nologin" /etc/passwd | head -n 5
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+root@eltex-practice2-pg2-v11:~# grep "/usr/sbin/nologin" /etc/passwd | cut -d: -f1,3 | while IFS=: read -r user uid; do groups=$(id -nG "$user" | tr '\n' ' '); echo "$uid, $user, $groups"; done | sort -t, -k1,1nr | head -n 15
+65534, nobody, nogroup 
+1003, user3, user3 users prc 
+998, systemd-network, systemd-network 
+997, systemd-timesync, systemd-timesync 
+992, systemd-resolve, systemd-resolve 
+991, polkitd, polkitd 
+989, fwupd-refresh, fwupd-refresh 
+109, sshd, nogroup 
+108, usbmux, plugdev 
+107, landscape, landscape 
+105, tcpdump, tcpdump 
+104, uuidd, uuidd 
+103, syslog, syslog adm 
+101, messagebus, messagebus 
+42, _apt, nogroup 
+root@eltex-practice2-pg2-v11:~# dmesg | grep "kernel"
+[    0.100762] Booting paravirtualized kernel on KVM
+[    0.205852] Memory: 3925848K/4193760K available (22528K kernel code, 4441K rwdata, 14440K rodata, 4936K init, 4772K bss, 267652K reserved, 0K cma-reserved)
+[    0.838741] Loaded X.509 cert 'Build time autogenerated kernel key: 67dae3bf0284ce2ad34b9632cb7c8734f4f57c6c'
+[    1.037802] Loaded X.509 cert 'Build time autogenerated kernel key: 67dae3bf0284ce2ad34b9632cb7c8734f4f57c6c'
+[    1.072855] Freeing unused kernel image (initmem) memory: 4936K
+[    1.074876] Write protecting the kernel read-only data: 38912k
+[    1.076864] Freeing unused kernel image (rodata/data gap) memory: 1944K
+[   59.691028] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[   59.766572] systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+[   59.776623] systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+root@eltex-practice2-pg2-v11:~# wc -l /var/log/kern.log
+1360 /var/log/kern.log
+root@eltex-practice2-pg2-v11:~# cat /var/log/apt/history.log | head -n 10
+
+Start-Date: 2025-02-16  20:51:22
+Commandline: apt-get install --reinstall apt
+Reinstall: apt:amd64 (2.7.14build2)
+End-Date: 2025-02-16  20:51:24
+
+Start-Date: 2025-02-16  20:51:26
+Commandline: apt-get install --reinstall base-files
+Reinstall: base-files:amd64 (13ubuntu10)
+End-Date: 2025-02-16  20:51:28
+root@eltex-practice2-pg2-v11:~# awk '/^Commandline:/ {c=$0} /^Start-Date:/ {s=$0} /^End-Date:/ {print c " ; " s " ; " $0}' /var/log/apt/history.log | head -n 5
+Commandline: apt-get install --reinstall apt ; Start-Date: 2025-02-16  20:51:22 ; End-Date: 2025-02-16  20:51:24
+Commandline: apt-get install --reinstall base-files ; Start-Date: 2025-02-16  20:51:26 ; End-Date: 2025-02-16  20:51:28
+Commandline: apt-get install --reinstall base-passwd ; Start-Date: 2025-02-16  20:51:31 ; End-Date: 2025-02-16  20:51:32
+Commandline: apt-get install --reinstall bash ; Start-Date: 2025-02-16  20:51:35 ; End-Date: 2025-02-16  20:51:37
+Commandline: apt-get install --reinstall bsdutils ; Start-Date: 2025-02-16  20:51:39 ; End-Date: 2025-02-16  20:51:41
+root@eltex-practice2-pg2-v11:~# exit
+logout
+Connection to 172.16.9.211 closed.
+eltex-pg2-v11@eltex-2026-autumn:~$ exit
+exit
+
+Script done on 2026-10-21 14:03:10+07:00 [COMMAND_EXIT_CODE="0"]
