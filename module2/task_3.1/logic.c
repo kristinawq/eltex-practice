@@ -14,6 +14,9 @@ int parse_permissions(const char *str, unsigned int *out_mode) {
     if (strlen(str) != 9) return 0;
     for (int i = 0; i < 9; i++) {
         if (str[i] != '-') {
+            if (str[i] != 'r' && str[i] != 'w' && str[i] != 'x') {
+                return 0;
+            }
             mode |= (1 << (8 - i)); 
         }
     }
