@@ -9,7 +9,6 @@ static void clear_input(void) {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-// Генерация случайного 32-битного IP
 static uint32_t generate_random_ip(void) {
     uint32_t ip = 0;
     ip |= (rand() % 256) << 24;
@@ -67,7 +66,6 @@ int main(void) {
         printf("Ошибка: количество должно быть больше нуля.\n");
     }
 
-    // Инициализация генератора текущим временем
     srand(time(NULL)); 
 
     my_packets = 0;
