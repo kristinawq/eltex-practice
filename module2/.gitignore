@@ -1,0 +1,8 @@
+app
+calc
+phonebook
+test_app
+test_calc
+*.o
+*.a
+*.so
