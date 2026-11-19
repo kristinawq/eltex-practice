@@ -23,7 +23,6 @@ void test_get_file_size_ok(void)
 
 void test_get_file_size_missing(void)
 {
-    /* Ошибка ввода: файла не существует */
     TEST_ASSERT_EQUAL_INT(-1, get_file_size("/tmp/no_such_xyz_123"));
 }
 
@@ -36,7 +35,6 @@ void test_make_copy_name_ok(void)
 
 void test_make_copy_name_too_small(void)
 {
-    /* Ошибка ввода: слишком длинное имя для буфера */
     char dst[5];
     TEST_ASSERT_EQUAL_INT(-1, make_copy_name("longname.txt", dst, sizeof(dst)));
 }
